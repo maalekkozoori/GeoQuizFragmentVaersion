@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Learning/Android Projects/GeoQuizFragmentVaersion/app/src/main/res/layout-land/fragment_cheat.xml" value="0.1728395061728395" />
+        <entry key="..\:/Learning/Android Projects/GeoQuizFragmentVaersion/app/src/main/res/layout-land/fragment_exam.xml" value="0.1728395061728395" />
         <entry key="..\:/Learning/Android Projects/GeoQuizFragmentVaersion/app/src/main/res/layout/activity_main.xml" value="0.16847826086956522" />
         <entry key="..\:/Learning/Android Projects/GeoQuizFragmentVaersion/app/src/main/res/layout/fragment_cheat.xml" value="0.18070652173913043" />
         <entry key="..\:/Learning/Android Projects/GeoQuizFragmentVaersion/app/src/main/res/layout/fragment_exam.xml" value="0.18070652173913043" />
