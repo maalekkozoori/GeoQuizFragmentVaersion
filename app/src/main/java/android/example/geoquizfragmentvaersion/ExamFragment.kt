@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import java.util.*
 
 class ExamFragment:Fragment(R.layout.fragment_exam) {
 
@@ -18,7 +19,7 @@ class ExamFragment:Fragment(R.layout.fragment_exam) {
         binding = FragmentExamBinding.bind(view)
 
         with(binding){
-
+            tvScore?.text = viewModel.scoreLiveData.value.toString()
             tvQuestion.text = viewModel.qList[viewModel.qCounter].questions
             if (viewModel.qCounter == 0) btnPrev.isEnabled = true
 
@@ -58,6 +59,7 @@ class ExamFragment:Fragment(R.layout.fragment_exam) {
                 }
                 if (viewModel.qList[viewModel.qCounter].answer == viewModel.answer) {
                     Toast.makeText(requireContext(), "Correct!", Toast.LENGTH_SHORT).show()
+                    setScore()
                 } else {
                     Toast.makeText(requireContext(), "Incorrect!", Toast.LENGTH_SHORT).show()
                 }
@@ -73,6 +75,7 @@ class ExamFragment:Fragment(R.layout.fragment_exam) {
                 }
                 if (viewModel.qList[viewModel.qCounter].answer == viewModel.answer) {
                     Toast.makeText(requireContext(), "Correct!", Toast.LENGTH_SHORT).show()
+                    setScore()
                 } else {
                     Toast.makeText(requireContext(), "Incorrect!", Toast.LENGTH_SHORT).show()
                 }
@@ -83,6 +86,18 @@ class ExamFragment:Fragment(R.layout.fragment_exam) {
             btnCheat.setOnClickListener {
                 findNavController().navigate(ExamFragmentDirections.actionExamFragmentToCheatFragment(viewModel.qCounter))
             }
+
+
         }
+
+    }
+
+    fun setScore(){
+
+        viewModel.scoreLiveData.value = viewModel.scoreLiveData.value!!.toInt()+1
+        viewModel.scoreLiveData.observe(this.viewLifecycleOwner, androidx.lifecycle.Observer {
+            //Toast.makeText(context, viewModel.scoreLiveData.value.toString(), Toast.LENGTH_SHORT).show()
+            binding.tvScore?.text = viewModel.scoreLiveData.value.toString()
+        })
     }
 }

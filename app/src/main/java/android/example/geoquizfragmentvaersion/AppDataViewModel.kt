@@ -1,10 +1,14 @@
 package android.example.geoquizfragmentvaersion
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class AppDataViewModel : ViewModel() {
 
+    var scoreLiveData = MutableLiveData<Int>()
     var answer = true
+    var qCounter = 0
     var qList = mutableListOf<Questions>(
         (Questions("Question 1:Is Tehran the capital of Iran?", true)),
         (Questions("Question 2:Is Los Angeles the capital of the United States?", false)),
@@ -18,8 +22,10 @@ class AppDataViewModel : ViewModel() {
         (Questions("Question 10:Is Berlin the capital of Norway?", false))
     )
 
-    var qCounter = 0
 
+    init {
+        scoreLiveData.value = 0
+    }
 
     override fun onCleared() {
         super.onCleared()
